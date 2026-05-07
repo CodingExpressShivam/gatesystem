@@ -173,83 +173,85 @@
 
   </div>
 
-  <script>
+ <script>
 
-    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzyUmtfBWkr6UT1esbzz_Xn4QstqysP57daLlAqfGevKXv0uOacfr2q8KdC3EByHfLonw/exec";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwJnNEsJbiCE1P-BPA-VOsB5lOHbPfl3MvETWsY_77zXPA_c0nh2g9KQTm9Wl3gEZ3T9g/exec";
 
-    let isSubmitting = false;
+let isSubmitting = false;
 
-    document.getElementById("form")
-      .addEventListener("submit", function (e) {
+document.getElementById("form")
+.addEventListener("submit", function(e){
 
-        e.preventDefault();
+  e.preventDefault();
 
-        if (isSubmitting) return;
+  if(isSubmitting) return;
 
-        isSubmitting = true;
+  isSubmitting = true;
 
-        const btn = document.querySelector("button");
+  const btn = document.querySelector("button[type='submit']");
 
-        btn.disabled = true;
-        btn.innerText = "Saving...";
+  btn.disabled = true;
+  btn.innerText = "Saving...";
 
-        const data = {
+  const data = {
 
-          date: document.getElementById("date").value,
+    sheetName: "Sheet1",
 
-          time: document.getElementById("time").value,
+    date: document.getElementById("date").value,
 
-          item: document.getElementById("item").value,
+    time: document.getElementById("time").value,
 
-          quantity: document.getElementById("quantity").value,
+    item: document.getElementById("item").value,
 
-          unit: document.getElementById("unit").value,
+    quantity: document.getElementById("quantity").value,
 
-          vehicle: document.getElementById("vehicle").value,
+    unit: document.getElementById("unit").value,
 
-          driver: document.getElementById("driver").value,
+    vehicle: document.getElementById("vehicle").value,
 
-          location: document.getElementById("location").value
+    driver: document.getElementById("driver").value,
 
-        };
+    location: document.getElementById("location").value
 
-        fetch(SCRIPT_URL, {
+  };
 
-          method: "POST",
+  fetch(SCRIPT_URL, {
 
-          body: JSON.stringify(data)
+    method: "POST",
 
-        })
+    body: JSON.stringify(data)
 
-          .then(res => res.text())
+  })
 
-          .then(() => {
+  .then(res => res.text())
 
-            alert("Saved Successfully");
+  .then(() => {
 
-            document.getElementById("form").reset();
+    alert("Saved Successfully");
 
-          })
+    document.getElementById("form").reset();
 
-          .catch(() => {
+  })
 
-            alert("Error Saving Data");
+  .catch(() => {
 
-          })
+    alert("Error Saving Data");
 
-          .finally(() => {
+  })
 
-            isSubmitting = false;
+  .finally(() => {
 
-            btn.disabled = false;
+    isSubmitting = false;
 
-            btn.innerText = "SAVE ENTRY";
+    btn.disabled = false;
 
-          });
+    btn.innerText = "SAVE ENTRY";
 
-      });
+  });
 
-  </script>
+});
+
+</script>
   <div class="footer">
  Version 2.1 | © Copyright 2026 | Developed By Shivam Saini
 </div>
