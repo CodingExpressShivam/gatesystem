@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Gate Entry System</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #fff7ed;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .box {
+      width: 100%;
+      max-width: 420px;
+      background: white;
+      padding: 25px;
+      border-radius: 16px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+      border: 2px solid #f97316;
+    }
+
+    h2 {
+      text-align: center;
+      color: #ea580c;
+      margin-bottom: 20px;
+    }
+
+    form {
+      width: 100%;
+    }
+    
+
+    input {
+      width: 100%;
+      height: 48px;
+      padding: 0 14px;
+      margin-bottom: 14px;
+      border: 2px solid #fdba74;
+      border-radius: 10px;
+      font-size: 15px;
+      outline: none;
+      background: white;
+      color: #333;
+    }
+
+    input:focus {
+      border-color: #ea580c;
+    }
+
+    select {
+      width: 100%;
+      height: 48px;
+      padding: 0 14px;
+      margin-bottom: 14px;
+      border: 2px solid #fdba74;
+      border-radius: 10px;
+      font-size: 15px;
+      outline: none;
+      background: white;
+      color: #333;
+      cursor: pointer;
+    }
+
+    select:focus {
+      border-color: #ea580c;
+    }
+
+    button {
+      width: 100%;
+      height: 50px;
+      border: none;
+      border-radius: 10px;
+      background: #f97316;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #ea580c;
+    }
+
+    button:disabled {
+      background: gray;
+    }
+
+    .footer{
+  position:fixed;
+  bottom:10px;
+  left:0;
+  width:100%;
+  text-align:center;
+  color:#ea580c;
+  font-size:14px;
+}
+  </style>
+</head>
+
+<body>
+
+  <div class="box">
+
+    <h2>Gate Entry</h2>
+
+    <form id="form">
+
+      <input type="date" id="date" required>
+
+      <input type="time" id="time" required>
+
+      <input type="text" id="item" placeholder="Item" required>
+
+      <input type="number" id="quantity" placeholder="Quantity" required>
+
+      <select id="unit" required>
+        <option disabled selected>Unit</option>
+        <option >Nos</option>
+        <option >Packet</option>
+        <option >Bags</option>
+        <option >Liters</option>
+        <option >Meters</option>
+        <option >ETC</option>
+      </select>
+
+      <input type="text" id="vehicle" placeholder="Vehicle" required>
+
+      <input type="text" id="driver" placeholder="Driver" required>
+
+      <select id="location" required>
+        <option disabled selected>Location</option>
+        <option >SFGPL Send to BIOFUEL</option>
+        <option >BIOFUEL Send to SFGPL</option>
+      </select>
+
+      <button type="submit">
+        SAVE ENTRY
+      </button>
+
+    </form>
+
+  </div>
+
+  <script>
+
+    const SCRIPT_URL = "PASTE_WEB_APP_URL_HERE";
+
+    let isSubmitting = false;
+
+    document.getElementById("form")
+      .addEventListener("submit", function (e) {
+
+        e.preventDefault();
+
+        if (isSubmitting) return;
+
+        isSubmitting = true;
+
+        const btn = document.querySelector("button");
+
+        btn.disabled = true;
+        btn.innerText = "Saving...";
+
+        const data = {
+
+          date: document.getElementById("date").value,
+
+          time: document.getElementById("time").value,
+
+          item: document.getElementById("item").value,
+
+          quantity: document.getElementById("quantity").value,
+
+          unit: document.getElementById("unit").value,
+
+          vehicle: document.getElementById("vehicle").value,
+
+          driver: document.getElementById("driver").value,
+
+          location: document.getElementById("location").value
+
+        };
+
+        fetch(SCRIPT_URL, {
+
+          method: "POST",
+
+          body: JSON.stringify(data)
+
+        })
+
+          .then(res => res.text())
+
+          .then(() => {
+
+            alert("Saved Successfully");
+
+            document.getElementById("form").reset();
+
+          })
+
+          .catch(() => {
+
+            alert("Error Saving Data");
+
+          })
+
+          .finally(() => {
+
+            isSubmitting = false;
+
+            btn.disabled = false;
+
+            btn.innerText = "SAVE ENTRY";
+
+          });
+
+      });
+
+  </script>
+  <div class="footer">
+ Version 2.1 | © Copyright 2026 | Developed By Shivam Saini
+</div>
+
+</body>
+
+
+</html>
