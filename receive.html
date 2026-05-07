@@ -170,7 +170,7 @@
 
 <script>
 
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyp_ntZByO9oTPe1ooxdX-R5gOZzC99Gl_ngJ2RO2uo-Ib8ztHbFsA4krX7HvEoKKlLfw/exec";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwJnNEsJbiCE1P-BPA-VOsB5lOHbPfl3MvETWsY_77zXPA_c0nh2g9KQTm9Wl3gEZ3T9g/exec";
 
 let isSubmitting = false;
 
@@ -179,16 +179,20 @@ document.getElementById("form")
 
   e.preventDefault();
 
+  // Stop multiple clicks
   if(isSubmitting) return;
 
   isSubmitting = true;
 
-  const btn = document.querySelector("button");
+  const btn = document.querySelector("button[type='submit']");
 
   btn.disabled = true;
   btn.innerText = "Saving...";
 
+  // Form Data
   const data = {
+
+    sheetName: "Receive Entry",
 
     date: document.getElementById("date").value,
 
@@ -212,9 +216,10 @@ document.getElementById("form")
 
   };
 
+  // Send Data
   fetch(SCRIPT_URL, {
 
-    method:"POST",
+    method: "POST",
 
     body: JSON.stringify(data)
 
@@ -226,6 +231,7 @@ document.getElementById("form")
 
     alert("Entry Saved Successfully");
 
+    // Reset Form
     document.getElementById("form").reset();
 
   })
@@ -249,6 +255,7 @@ document.getElementById("form")
 });
 
 </script>
+
 
 </body>
 </html>
