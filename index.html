@@ -3,133 +3,142 @@
 
 <head>
   <title>Gate Entry System</title>
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
     }
 
-    body {
-      font-family: Arial, sans-serif;
-      background: #fff7ed;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      padding: 20px;
+    body{
+      font-family:Arial,sans-serif;
+      background:#fff7ed;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      min-height:100vh;
+      padding:20px;
     }
 
-    .box {
-      width: 100%;
-      max-width: 420px;
-      background: white;
-      padding: 25px;
-      border-radius: 16px;
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-      border: 2px solid #f97316;
+    .main{
+      width:100%;
+      max-width:420px;
     }
 
-    h2 {
-      text-align: center;
-      color: #ea580c;
-      margin-bottom: 20px;
+    .top-btn{
+      width:100%;
+      height:45px;
+      margin-bottom:15px;
+      border:none;
+      border-radius:10px;
+      background:#ea580c;
+      color:white;
+      font-size:15px;
+      font-weight:bold;
+      cursor:pointer;
     }
 
-    form {
-      width: 100%;
-    }
-    
-
-    input {
-      width: 100%;
-      height: 48px;
-      padding: 0 14px;
-      margin-bottom: 14px;
-      border: 2px solid #fdba74;
-      border-radius: 10px;
-      font-size: 15px;
-      outline: none;
-      background: white;
-      color: #333;
+    .box{
+      width:100%;
+      background:white;
+      padding:25px;
+      border-radius:16px;
+      box-shadow:0 0 15px rgba(0,0,0,0.1);
+      border:2px solid #f97316;
     }
 
-    input:focus {
-      border-color: #ea580c;
+    h2{
+      text-align:center;
+      color:#ea580c;
+      margin-bottom:20px;
     }
 
-    select {
-      width: 100%;
-      height: 48px;
-      padding: 0 14px;
-      margin-bottom: 14px;
-      border: 2px solid #fdba74;
-      border-radius: 10px;
-      font-size: 15px;
-      outline: none;
-      background: white;
-      color: #333;
-      cursor: pointer;
+    form{
+      width:100%;
     }
 
-    select:focus {
-      border-color: #ea580c;
+    input,
+    select,
+    textarea{
+      width:100%;
+      padding:12px;
+      margin-bottom:14px;
+      border:2px solid #fdba74;
+      border-radius:10px;
+      font-size:15px;
+      outline:none;
+      background:white;
+      color:#333;
     }
 
-    button {
-      width: 100%;
-      height: 50px;
-      border: none;
-      border-radius: 10px;
-      background: #f97316;
-      color: white;
-      font-size: 16px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: 0.3s;
+    input,
+    select{
+      height:48px;
     }
 
-    button:hover {
-      background: #ea580c;
+    textarea{
+      height:80px;
+      resize:none;
+      font-family:Arial,sans-serif;
     }
 
-    button:disabled {
-      background: gray;
+    input:focus,
+    select:focus,
+    textarea:focus{
+      border-color:#ea580c;
+    }
+
+    .save-btn{
+      width:100%;
+      height:50px;
+      border:none;
+      border-radius:10px;
+      background:#f97316;
+      color:white;
+      font-size:16px;
+      font-weight:bold;
+      cursor:pointer;
+      transition:0.3s;
+    }
+
+    .save-btn:hover{
+      background:#ea580c;
+    }
+
+    .save-btn:disabled{
+      background:gray;
     }
 
     .footer{
-  position:fixed;
-  bottom:10px;
-  left:0;
-  width:100%;
-  text-align:center;
-  color:#ea580c;
-  font-size:14px;
-}
-    .top-btn{
-  width:100%;
-  height:45px;
-  margin-bottom:15px;
-  border:none;
-  border-radius:10px;
-  background:#ea580c;
-  color:white;
-  font-size:15px;
-  font-weight:bold;
-  cursor:pointer;
-  display:block;
-}
+      position:fixed;
+      bottom:10px;
+      left:0;
+      width:100%;
+      text-align:center;
+      color:#ea580c;
+      font-size:14px;
+    }
+
   </style>
+
 </head>
 
 <body>
-  <a href="receive.html" class="link-btn">
-  <button type="button" class="top-btn">
+
+<div class="main">
+
+  <button
+    type="button"
+    class="top-btn"
+    onclick="window.location.href='receive.html'">
+
     Receive Entry
+
   </button>
-</a>
 
   <div class="box">
 
@@ -146,14 +155,23 @@
       <input type="number" id="quantity" placeholder="Quantity" required>
 
       <select id="unit" required>
+
         <option disabled selected>Unit</option>
-        <option >Nos</option>
-        <option >Packet</option>
-        <option >Bags</option>
-        <option >Liters</option>
-        <option >Meters</option>
-        <option >Cylinder</option>
-        <option >ETC</option>
+
+        <option>Nos</option>
+
+        <option>Packet</option>
+
+        <option>Bags</option>
+
+        <option>Liters</option>
+
+        <option>Meters</option>
+
+        <option>Cylinder</option>
+
+        <option>ETC</option>
+
       </select>
 
       <input type="text" id="vehicle" placeholder="Vehicle" required>
@@ -161,22 +179,47 @@
       <input type="text" id="driver" placeholder="Driver" required>
 
       <select id="location" required>
+
         <option disabled selected>Location</option>
-        <option >SFGPL Send to BIOFUEL</option>
-        <option >BIOFUEL Send to SFGPL</option>
+
+        <option>SFGPL Send to BIOFUEL</option>
+
+        <option>BIOFUEL Send to SFGPL</option>
+
       </select>
 
-      <button type="submit">
+      <input
+        type="text"
+        id="receiver"
+        placeholder="Your Name"
+        required>
+
+      <textarea
+        id="remark"
+        placeholder="Remark"></textarea>
+
+      <button type="submit" class="save-btn">
+
         SAVE ENTRY
+
       </button>
 
     </form>
 
   </div>
 
- <script>
+</div>
 
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwJnNEsJbiCE1P-BPA-VOsB5lOHbPfl3MvETWsY_77zXPA_c0nh2g9KQTm9Wl3gEZ3T9g/exec";
+<div class="footer">
+
+  Version 2.1 | © Copyright 2026 | Developed By Shivam Saini
+
+</div>
+
+<script>
+
+const SCRIPT_URL =
+"https://script.google.com/macros/s/AKfycbwJnNEsJbiCE1P-BPA-VOsB5lOHbPfl3MvETWsY_77zXPA_c0nh2g9KQTm9Wl3gEZ3T9g/exec";
 
 let isSubmitting = false;
 
@@ -189,36 +232,52 @@ document.getElementById("form")
 
   isSubmitting = true;
 
-  const btn = document.querySelector("button[type='submit']");
+  const btn =
+  document.querySelector(".save-btn");
 
   btn.disabled = true;
+
   btn.innerText = "Saving...";
 
   const data = {
 
     sheetName: "Sheet1",
 
-    date: document.getElementById("date").value,
+    date:
+    document.getElementById("date").value,
 
-    time: document.getElementById("time").value,
+    time:
+    document.getElementById("time").value,
 
-    item: document.getElementById("item").value,
+    item:
+    document.getElementById("item").value,
 
-    quantity: document.getElementById("quantity").value,
+    quantity:
+    document.getElementById("quantity").value,
 
-    unit: document.getElementById("unit").value,
+    unit:
+    document.getElementById("unit").value,
 
-    vehicle: document.getElementById("vehicle").value,
+    vehicle:
+    document.getElementById("vehicle").value,
 
-    driver: document.getElementById("driver").value,
+    driver:
+    document.getElementById("driver").value,
 
-    location: document.getElementById("location").value
+    location:
+    document.getElementById("location").value,
+
+    receiver:
+    document.getElementById("receiver").value,
+
+    remark:
+    document.getElementById("remark").value
 
   };
 
   fetch(SCRIPT_URL, {
 
-    method: "POST",
+    method:"POST",
 
     body: JSON.stringify(data)
 
@@ -253,11 +312,6 @@ document.getElementById("form")
 });
 
 </script>
-  <div class="footer">
- Version 2.1 | © Copyright 2026 | Developed By Shivam Saini
-</div>
 
 </body>
-
-
 </html>
